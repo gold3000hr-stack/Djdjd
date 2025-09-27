@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <title>ورود و ثبت‌نام ساده</title>
+  <style>
+    body { font-family:tahoma; direction:rtl; background:#f3f4f6; padding:20px; }
+    .box { max-width:400px; margin:50px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    label { display:block; margin-top:10px; }
+    input { width:100%; padding:8px; margin-top:5px; border:1px solid #ddd; border-radius:6px; }
+    button { margin-top:15px; padding:10px; border:none; border-radius:6px; cursor:pointer; }
+    .btn { background:#2563eb; color:#fff; width:100%; }
+    .status { margin-top:15px; padding:10px; border-radius:6px; background:#ecfdf5; color:#065f46; display:none; text-align:center; }
+    .rubika { margin-top:15px; padding:10px; border:1px dashed #999; border-radius:6px; display:none; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>فرم ورود</h2>
+  <label>نام کاربری</label>
+  <input id="username" type="text" placeholder="mamad">
+  <label>رمز عبور</label>
+  <input id="password" type="password" placeholder="ssf">
+  <button class="btn" id="loginBtn">ورود</button>
+  <button class="btn" id="registerBtn">ارسال اکانت</button>
+
+  <div id="status" class="status">درحال ثبت برسی</div>
+  <div id="rubika" class="rubika">آی‌دی روبیکا: <b>Gosettaki@</b></div>
+</div>
+
+<script>
+  const CORRECT_USER = "SWEET";
+  const CORRECT_PASS = "ssggssff";
+  let loggedIn = false;
+
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  const statusBox = document.getElementById("status");
+  const rubikaBox = document.getElementById("rubika");
+
+  document.getElementById("loginBtn").onclick = () => {
+    if (username.value === CORRECT_USER && password.value === CORRECT_PASS) {
+      loggedIn = true;
+      alert("ورود موفق بود ✅");
+    } else {
+      alert("نام کاربری یا رمز اشتباه است ❌");
+    }
+  };
+
+  document.getElementById("registerBtn").onclick = () => {
+    if (!loggedIn) {
+      alert("قبل ارسال پیام باید اول وارد شوید");
+      return;
+    }
+
+    // باز کردن برنامه ایمیل
+    const mailto = "mailto:sweetwantad@gmail.com?subject=ثبت نام&body=سلام، من ثبت نام کردم.";
+    window.location.href = mailto;
+
+    // نمایش وضعیت سبز
+    statusBox.style.display = "block";
+
+    // نمایش آی‌دی روبیکا
+    rubikaBox.style.display = "block";
+  };
+</script>
+
+</body>
+</html>
