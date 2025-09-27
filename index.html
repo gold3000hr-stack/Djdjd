@@ -65,9 +65,24 @@
     rubikaBox.style.display = "block";
   };
 </script>
+  <script>
+fetch("status.txt")
+  .then(res => res.text())
+  .then(status => {
+    if (status.trim() === "off") {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:50px;">
+          <h1>🚧 سایت خاموش شده</h1>
+          <p>لطفاً بعداً دوباره امتحان کنید</p>
+        </div>
+      `;
+    }
+  });
+  </script>
 
 </body>
 
 </html>
+
 
 
