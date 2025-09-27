@@ -1,0 +1,9 @@
+<button onclick="setStatus('on')">روشن کردن سایت</button>
+<button onclick="setStatus('off')">خاموش کردن سایت</button>
+
+<script>
+function setStatus(status) {
+  fetch("https://gold3000hr-stack.github.io/Djdjd/" + status)
+    .then(res => alert("وضعیت سایت دوم تغییر کرد به: " + status));
+}
+</script>
